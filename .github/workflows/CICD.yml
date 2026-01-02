@@ -74,7 +74,13 @@ jobs:
           script: |
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/live_server:latest
             sudo docker-compose -f docker-compose-${{env.TARGET_UPSTREAM}}.yml up -d
-      
+
+      - name: Print Target URL  # 이 단계를 추가해서 로그를 확인하세요
+        run: |
+          echo "Target IP: ${{ secrets.LIVE_SERVER_IP }}"
+          echo "Target Port: ${{ env.TARGET_PORT }}"
+          echo "Full URL: http://${{ secrets.LIVE_SERVER_IP }}:${{ env.TARGET_PORT }}/env"
+
       - name: Check deploy server URL
         uses: jtalk/url-health-check-action@v3
         with:
