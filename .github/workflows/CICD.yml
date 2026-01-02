@@ -79,7 +79,7 @@ jobs:
         run: |
           echo "Target IP: ${{ secrets.LIVE_SERVER_IP }}"
           echo "Target Port: ${{ env.TARGET_PORT }}"
-          echo "Full URL: http://${{ secrets.LIVE_SERVER_IP }}:${{ env.TARGET_PORT }}/env"
+          echo "Full URL: http://${{ secrets.LIVE_SERVER_IP }}:${{ env.STOPPED_PORT }}/env"
 
       - name: Check deploy server URL
         uses: jtalk/url-health-check-action@v3
